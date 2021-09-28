@@ -1,0 +1,274 @@
+<html>
+<style>
+html {
+  background-color: #59DFE8;
+}
+body {
+  margin: 0;
+  width: 100%;
+}
+
+div.bg {
+  height: 100vmin;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+.over {
+  box-shadow: 0 0 20px 20px #59dfe8 inset;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.bg > img {
+  height: 100vmin;
+  width: auto;
+  display: block;
+}
+.content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+}
+.profile {
+  position: absolute;
+  width: 6%;
+  height: 8.8%;
+  cursor: pointer;
+}
+.winner {
+  position: absolute;
+  width: 9%;
+}
+</style>
+  <body>
+    <div class="content">
+      <div class="bg">
+        <img class="bg" src="./bg.jpg"/>
+        <div class="over"></div>
+        <div class="profile" data-name="Holly" data-link="https://media.explore.org/documents/435holly-beforeafter-1632778278471.png" style="
+          left: 7.5%;
+          top: 2.6%;
+        "></div>
+        <div class="profile" data-name="Grazer" data-link="https://media.explore.org/documents/128grazer-beforeafter-1632778787221.png" style="
+          left: 7.5%;
+          top: 19.6%;
+        "></div>
+        <div class="profile" data-name="Popeye" data-link="https://media.explore.org/documents/634-beforeafter-1632778360782.png" style="
+          left: 7.5%;
+          top: 60.3%;
+        "></div>
+        <div class="profile" data-name="Walker" data-link="https://media.explore.org/documents/151walker-beforeafter-1632778228964.png" style="
+          left: 7.5%;
+          top: 77.6%;
+        "></div>
+        <div class="profile" data-name="Cub" data-link="https://media.explore.org/documents/132-spring-cub-beforeafter-1632778196432.png" style="
+          left: 16.6%;
+          top: 33.5%;
+        "></div>
+        <div class="profile" data-name="Chunk" data-link="https://media.explore.org/documents/32chunk-beforeafter-1632778069052.png" style="
+          left: 16.6%;
+          top: 46.5%;
+        "></div>
+
+        <div class="profile" data-name="812" data-link="https://media.explore.org/documents/812-beforeafter-1632778421957.png" style="
+          left: 86.5%;
+          top: 2.6%;
+        "></div>
+        <div class="profile" data-name="131" data-link="https://media.explore.org/documents/131-beforeafter-1632778809698.png" style="
+          left: 86.5%;
+          top: 19.6%;
+        "></div>
+        <div class="profile" data-name="402" data-link="https://media.explore.org/documents/402-beforeafter-1632778251877.png" style="
+          left: 86.5%;
+          top: 60.3%;
+        "></div>
+        <div class="profile" data-name="Otis" data-link="https://media.explore.org/documents/480otis-beforeafter-1632778305141.png" style="
+          left: 86.5%;
+          top: 77.6%;
+        "></div>
+        <div class="profile" data-name="503" data-link="https://media.explore.org/documents/503-beforeafter-1632778334865.png" style="
+          left: 77.5%;
+          top: 33.5%;
+        "></div>
+        <div class="profile" data-name="747" data-link="https://media.explore.org/documents/747-beforeafter-1632778384653.png" style="
+          left: 77.5%;
+          top: 46.5%;
+        "></div>
+
+        <div class="winner" style="
+          left: 23%;
+          top: 15%;
+          "></div>
+        <div class="winner" style="
+          left: 23%;
+          top: 68%;
+          "></div>
+        <div class="winner" style="
+          left: 68%;
+          top: 15%;
+          "></div>
+        <div class="winner" style="
+          left: 68%;
+          top: 68%;
+          "></div>
+
+        <div class="winner" style="
+          left: 32%;
+          top: 26.5%;
+          "></div>
+        <div class="winner" style="
+          left: 32%;
+          top: 55.5%;
+          "></div>
+        <div class="winner" style="
+          left: 59%;
+          top: 26.5%;
+          "></div>
+        <div class="winner" style="
+          left: 59%;
+          top: 55.5%;
+          "></div>
+
+        <div class="winner" style="
+          left: 42%;
+          top: 30.5%;
+          "></div>
+        <div class="winner" style="
+          left: 49%;
+          top: 51%;
+          "></div>
+
+        <div class="winner" style="
+          left: 42%;
+          top: 35%;
+          width: 14%;
+          background: linear-gradient(0deg, #9aedf3, #59dfe8);
+          height: 7%;
+          padding-top: 4%;
+          padding-left: 1%;
+          padding-right: 1%;
+          font-size: 28pt;
+          "></div>
+
+      </div>
+    </div>
+  <script>
+let bracket = [
+  '10',
+  [
+    '8',
+    [
+      '4',
+      ['0', 1, 0, null,null],
+      4,
+      null,null
+    ],
+    [
+      '5',
+      5,
+      ['1', 2, 3, null,null],
+      null,null
+    ],
+    null,null
+  ],
+  [
+    '9',
+    [
+      '6',
+      ['2', 7, 6, null,null],
+      10,
+      null,null
+    ],
+    [
+      '7',
+      11,
+      ['3', 8, 9, null,null],
+      null,null
+    ],
+    null,null
+  ],
+  null,null
+];
+
+$ = (...args)=>Array.from(document.querySelectorAll.apply(document, args));
+let profs = $('.profile')
+let bears = {none:'???'};
+
+
+profs.map((v,i)=>{
+  v.addEventListener('click',()=>{
+    window.open(v.dataset.link);
+  })
+  bears[i] = v.dataset.name;
+});
+
+let winners = {};
+let groups = {};
+
+$('.winner').map((w,i)=>{
+  winners[`${i}`] = w;
+});
+
+let saved_groups = localStorage.getItem('groups');
+if (saved_groups === null)
+  saved_groups = groups;
+else
+  saved_groups = JSON.parse(saved_groups);
+
+let get_guess = (g) => typeof(g) == 'object'? g[3] : g;
+let make_group = (g) =>{
+  console.log(g);
+  let [id, a, b, guess, real] = g;
+  groups[id] = g;
+
+  guess = saved_groups[id][3];
+  g[3] = guess;
+
+  let w = winners[id];
+  if (typeof(a) !== 'number') {
+    a = make_group(a);
+  }
+  if (typeof(b) !== 'number') {
+    b = make_group(b);
+  }
+  if (w !== undefined) {
+    let has_both = a !== 'none' && b !== 'none';
+    console.log(get_guess(a), guess);
+    console.log(get_guess(b), guess);
+    w.innerHTML = `<select style="
+      width: 100%;
+      ${!has_both?'background-color: #c1c1c1;':''}
+      ${guess!==null?'background-color: #61ff91;':''}
+    ">
+      <option>SELECT</option>
+      <option ${(get_guess(a) == guess)?'selected':''}>${bears[a]}</option>
+      <option ${(get_guess(b) == guess)?'selected':''}>${bears[b]}</option>
+    </select>`
+  }
+  if (guess === null)
+    return 'none';
+  return guess.toString();
+}
+let update = () => {
+  make_group(bracket);
+  $('select').map((v,i)=>{
+    v.addEventListener('change',() => {
+      if (v.selectedIndex === 0)
+        groups[i][3] = null;
+      else
+        groups[i][3] = get_guess(groups[i][v.selectedIndex]);
+      localStorage.setItem('groups',JSON.stringify(groups));
+      saved_groups = groups;
+      update();
+    });
+  });
+}
+update();
+  </script>
+  </body>
+</html>
