@@ -238,24 +238,37 @@ let make_group = (g, depth) =>{
   g[3] = guess;
 
   let w = winners[id];
+  let a_val = a;
+  let b_val = b;
+
+  if (real === -1)
+    real = null;
+
   if (typeof(a) !== 'number') {
-    a = make_group(a, depth-1);
+    a_val = make_group(a, depth-1);
+    if (guess == a_val && a[4] !== null && a[4] != guess) {
+      real = -1;
+    }
   }
   if (typeof(b) !== 'number') {
-    b = make_group(b, depth-1);
+    b_val = make_group(b, depth-1);
+    if (guess == b_val && b[4] !== null && b[4] != guess) {
+      real = -1;
+    }
   }
-  if (guess !== null && real === guess) {
+  g[4] = real;
+
+  if (guess !== null && real == guess) {
     score += 2**depth;
   }
+
   if (w !== undefined) {
     let has_both = a !== 'none' && b !== 'none';
-    console.log(get_guess(a), guess);
-    console.log(get_guess(b), guess);
     w.innerHTML = `<select style="
       width: 100%;
       ${!has_both?'background-color: #c1c1c1;':''}
       ${guess!==null?(
-        (real === null || guess === real)?
+        (real === null || guess == real)?
         (real !== null?
          'background-color: #3ce870;':
          'background-color: #a3f9ff;'
@@ -264,8 +277,8 @@ let make_group = (g, depth) =>{
       ):''}
     ">
       <option>SELECT</option>
-      <option ${(get_guess(a) == guess)?'selected':''}>${bears[a]}</option>
-      <option ${(get_guess(b) == guess)?'selected':''}>${bears[b]}</option>
+      <option ${(a_val == guess)?'selected':''}>${bears[a_val]}</option>
+      <option ${(b_val == guess)?'selected':''}>${bears[b_val]}</option>
     </select>`
   }
   if (guess === null)
