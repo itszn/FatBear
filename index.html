@@ -44,6 +44,14 @@ div.bg {
   position: absolute;
   width: 9%;
 }
+.score {
+  position: absolute;
+  width: 20%;
+  text-align: center;
+  color: #7f1eff;
+  font-size: 20pt;
+  font-family: sans-serif;
+}
 </style>
   <body>
     <div class="content">
@@ -149,6 +157,11 @@ div.bg {
           width: 14%;
           "></div>
 
+        <div class="score" style="
+          left: 40%;
+          top: 83.5%;
+          ">0 Bracket Points</div>
+
       </div>
     </div>
   <script>
@@ -158,14 +171,14 @@ let bracket = [
     '8',
     [
       '4',
-      ['0', 0, 1, null,null],
+      ['0', 0, 1, null,1],
       4,
       null,null
     ],
     [
       '5',
       5,
-      ['1', 2, 3, null,null],
+      ['1', 2, 3, null,3],
       null,null
     ],
     null,null
@@ -174,14 +187,14 @@ let bracket = [
     '9',
     [
       '6',
-      ['2', 6, 7, null,null],
+      ['2', 6, 7, null,6],
       10,
       null,null
     ],
     [
       '7',
       11,
-      ['3', 8, 9, null,null],
+      ['3', 8, 9, null,9],
       null,null
     ],
     null,null
@@ -214,8 +227,9 @@ if (saved_groups === null)
 else
   saved_groups = JSON.parse(saved_groups);
 
+let score = 0;
 let get_guess = (g) => typeof(g) == 'object'? g[3] : g;
-let make_group = (g) =>{
+let make_group = (g, depth) =>{
   console.log(g);
   let [id, a, b, guess, real] = g;
   groups[id] = g;
@@ -225,10 +239,13 @@ let make_group = (g) =>{
 
   let w = winners[id];
   if (typeof(a) !== 'number') {
-    a = make_group(a);
+    a = make_group(a, depth-1);
   }
   if (typeof(b) !== 'number') {
-    b = make_group(b);
+    b = make_group(b, depth-1);
+  }
+  if (guess !== null && real === guess) {
+    score += 2**depth;
   }
   if (w !== undefined) {
     let has_both = a !== 'none' && b !== 'none';
@@ -237,7 +254,14 @@ let make_group = (g) =>{
     w.innerHTML = `<select style="
       width: 100%;
       ${!has_both?'background-color: #c1c1c1;':''}
-      ${guess!==null?'background-color: #b9ffce;':''}
+      ${guess!==null?(
+        (real === null || guess === real)?
+        (real !== null?
+         'background-color: #3ce870;':
+         'background-color: #a3f9ff;'
+        ):
+        'background-color: #FF3C3C; color: white;'
+      ):''}
     ">
       <option>SELECT</option>
       <option ${(get_guess(a) == guess)?'selected':''}>${bears[a]}</option>
@@ -249,7 +273,8 @@ let make_group = (g) =>{
   return guess.toString();
 }
 let update = () => {
-  make_group(bracket);
+  score = 0;
+  make_group(bracket, 3);
   $('select').map((v,i)=>{
     v.addEventListener('change',() => {
       if (v.selectedIndex === 0)
@@ -261,6 +286,7 @@ let update = () => {
       update();
     });
   });
+  $('.score')[0].innerText = `${score} Bracket Point${score!==1?'s':''}`;
 }
 update();
   </script>
