@@ -16,6 +16,11 @@ div.bg {
   margin-right: auto;
   position: relative;
 }
+.select-wrapper {
+  padding-top: 5em;
+  margin-top: -5em;
+  padding-bottom: 5em;
+}
 .over {
   box-shadow: 0 0 20px 14px #b1c25a inset;
   width: 100%;
@@ -387,11 +392,12 @@ let make_group = (g, depth) =>{
     } else {
       style += 'background-color: #9d6b47;';
     }
-    w.innerHTML = `<select style="${style}" class="${clazz}">
+    w.innerHTML = `<div class="select-wrapper"><select style="${style}" class="${clazz}">
       <option>${has_both?'SELECT':'MISSING'}</option>
       <option ${(a_val == guess)?'selected':''} value="${bear_a.id}">${bear_a.name}</option>
       <option ${(b_val == guess)?'selected':''} value="${bear_b.id}">${bear_b.name}</option>
-    </select>`
+    </select></div>`
+    let sel_w = w.querySelector('.select-wrapper');
     let sel = w.querySelector('select');
     // Add highlight to profiles when select is mouse over
     let highlight_fight = ()=>{
@@ -413,12 +419,12 @@ let make_group = (g, depth) =>{
       profs.map((v,i)=>v.classList.remove('select-profile'));
       profs.map((v,i)=>v.classList.remove('select-profile-selected'));
     };
-    sel.addEventListener('mouseover', highlight_fight);
+    sel_w.addEventListener('mouseover', highlight_fight);
     for (let op of sel.querySelectorAll('option')) {
       op.addEventListener('mouseover', highlight_fight);
     }
-    sel.addEventListener('mouseout',clearHighlights);
-    sel.addEventListener('change',clearHighlights);
+    sel_w.addEventListener('mouseout',clearHighlights);
+    sel_w.addEventListener('change',clearHighlights);
   }
   if (guess === null)
     return 'none';
