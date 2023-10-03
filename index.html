@@ -64,6 +64,9 @@ select {
 .select-profile {
   background-color: #6600ff40;
 }
+.select-profile-selected {
+  background-color: #00ff2647;
+}
 @keyframes hl-profile {
   0% {
     box-shadow: 0 0 11px 4px #e39b66;
@@ -371,7 +374,7 @@ let make_group = (g, depth) =>{
 
       if (guess !== null) {
         if (real === null || guess == real) {
-          style += 'background-color: #3ce870;';
+          style += 'background-color: #3ce870; font-weight: 700';
         } else {
           style += 'background-color: #FF3C3C; color: white;';
         }
@@ -392,32 +395,30 @@ let make_group = (g, depth) =>{
     let sel = w.querySelector('select');
     // Add highlight to profiles when select is mouse over
     let highlight_fight = ()=>{
-      if (sel.selectedIndex !== 0 && false) {
+      if (profile_a) {
+        profile_a.classList.add('select-profile');
+      }
+      if (profile_b) {
+        profile_b.classList.add('select-profile');
+      }
+      if (sel.selectedIndex !== 0) {
         console.log(sel.value);
         let bear = bears_by_id[sel.value];
         console.log(bear);
         let profile = profs.filter((v,i)=>v.dataset.name == bear.id)[0];
-        profile.classList.add('select-profile');
-      } else {
-        // Do it for both
-        if (profile_a) {
-          profile_a.classList.add('select-profile');
-        }
-        if (profile_b) {
-          profile_b.classList.add('select-profile');
-        }
+        profile.classList.add('select-profile-selected');
       }
+    };
+    let clearHighlights = ()=>{
+      profs.map((v,i)=>v.classList.remove('select-profile'));
+      profs.map((v,i)=>v.classList.remove('select-profile-selected'));
     };
     sel.addEventListener('mouseover', highlight_fight);
     for (let op of sel.querySelectorAll('option')) {
       op.addEventListener('mouseover', highlight_fight);
     }
-    sel.addEventListener('mouseout',()=>{
-      profs.map((v,i)=>v.classList.remove('select-profile'));
-    });
-    sel.addEventListener('change',()=>{
-      profs.map((v,i)=>v.classList.remove('select-profile'));
-    });
+    sel.addEventListener('mouseout',clearHighlights);
+    sel.addEventListener('change',clearHighlights);
   }
   if (guess === null)
     return 'none';
