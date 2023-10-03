@@ -1,5 +1,6 @@
 <html>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@400;900&display=swap');
 html {
   background-color: #59DFE8;
 }
@@ -23,6 +24,24 @@ div.bg {
   top: 0;
   left: 0;
 }
+select {
+  text-align: center;
+}
+@keyframes hl-select {
+  0% {
+    box-shadow: 0 0 11px 4px #e39b66;
+  }
+  50% {
+    box-shadow: 0 0 11px 4px #ffddc8;
+  }
+  100% {
+    box-shadow: 0 0 11px 4px #e39b66;
+  }
+}
+.hl-select {
+  /*animate box shadow*/
+  animation: hl-select 4s infinite;
+}
 .bg > img {
   height: 100vmin;
   width: auto;
@@ -36,9 +55,39 @@ div.bg {
 }
 .profile {
   position: absolute;
-  width: 6%;
-  height: 8.8%;
+  width: 7.5%;
+  height: 9.8%;
   cursor: pointer;
+  /*background-color: red;*/
+  border-radius: 100%;
+}
+.select-profile {
+  background-color: #6600ff40;
+}
+@keyframes hl-profile {
+  0% {
+    box-shadow: 0 0 11px 4px #e39b66;
+  }
+  50% {
+    box-shadow: 0 0 11px 4px #ffddc8;
+  }
+  100% {
+    box-shadow: 0 0 11px 4px #e39b66;
+  }
+}
+.hl-profile {
+  /*animate box shadow*/
+  animation: hl-profile 4s infinite;
+}
+.nickname {
+  position: absolute;
+  width: 3em;
+  height: 1em;
+  /*background-color: #59dfe8;*/
+  font-size: 20;
+  font-family: 'Londrina Solid', cursive;
+  font-weight: 800;
+  color: white;
 }
 .winner {
   position: absolute;
@@ -48,9 +97,10 @@ div.bg {
   position: absolute;
   width: 20%;
   text-align: center;
-  color: #7f1eff;
+  color: #fdff52;
   font-size: 20pt;
   font-family: sans-serif;
+  visibility: hidden;
 }
 </style>
   <body>
@@ -58,101 +108,134 @@ div.bg {
       <div class="bg">
         <img class="bg" src="./bg.jpg"/>
         <div class="over"></div>
-        <div class="profile" data-name="Holly" data-link="https://media.explore.org/documents/435holly-beforeafter-1632778278471.png" style="
-          left: 7.5%;
-          top: 2.6%;
+        <div class="profile" data-name="806" data-nickname="Jr" data-link="https://media.explore.org/documents/806springcub-1695691844423.png" style="
+          left: 2.8%;
+          top: 25.8%;
         "></div>
-        <div class="profile" data-name="Grazer" data-link="https://media.explore.org/documents/128grazer-beforeafter-1632778787221.png" style="
-          left: 7.5%;
-          top: 19.6%;
+        <div class="profile" data-name="428" data-link="https://media.explore.org/documents/428-1696281417619.png" style="
+          left: 2.8%;
+          top: 36.8%;
         "></div>
-        <div class="profile" data-name="Popeye" data-link="https://media.explore.org/documents/634-beforeafter-1632778360782.png" style="
-          left: 7.5%;
-          top: 60.3%;
+        <div class="profile" data-name="402" data-link="https://media.explore.org/documents/402-1696281391560.png" style="
+          left: 3.1%;
+          top: 69.8%;
         "></div>
-        <div class="profile" data-name="Walker" data-link="https://media.explore.org/documents/151walker-beforeafter-1632778228964.png" style="
-          left: 7.5%;
-          top: 77.6%;
-          background-color: #59dfe8;
-          opacity: 0.6;
+        <div class="profile" data-name="901" data-link="https://media.explore.org/documents/901-1696281535967.png" style="
+          left: 3.1%;
+          top: 81.0%;
         "></div>
-        <div class="profile" data-name="Cub" data-link="https://media.explore.org/documents/132-spring-cub-beforeafter-1632778196432.png" style="
-          left: 16.6%;
-          top: 33.5%;
-        "></div>
-        <div class="profile" data-name="Chunk" data-link="https://media.explore.org/documents/32chunk-beforeafter-1632778069052.png" style="
-          left: 16.6%;
-          top: 46.5%;
-        "></div>
+        <div class="profile" data-name="32" data-link="https://media.explore.org/documents/32chunk-1696281255060.png"
+        data-nickname="Chunk"
+        style="
+          left: 16.84%;
+          top: 47.0%;
+        "></div><div class="nickname" data-name="32" style="
+          left: 24.7%;
+          top: 53.5%;
+          text-shadow: 0 0 8px #140164f0;
+        ">Chunk</div>
+        <div class="profile" data-name="480" data-link="https://media.explore.org/documents/480otis-1696281467281.png"
+        data-nickname="Otis"
+        style="
+          left: 17.0%;
+          top: 61.0%;
+        "></div><div class="nickname" data-name="480" style="
+          left: 24.7%;
+          top: 61.8%;
+          text-shadow: 0 0 8px #140164f0;
+        ">Otis</div>
 
-        <div class="profile" data-name="812" data-link="https://media.explore.org/documents/812-beforeafter-1632778421957.png" style="
-          left: 86.7%;
-          top: 2.7%;
-          background-color: #59dfe8;
-          opacity: 0.6;
+        <div class="profile" data-name="128" data-link="https://media.explore.org/documents/128grazer-1696281283563.png"
+        data-nickname="Grazer"
+        style="
+          left: 90.25%;
+          top: 25.7%;
+        "></div><div class="nickname" data-name="128" style="
+          left: 85.7%;
+          top: 26.2%;
+        ">Grazer</div>
+        <div class="profile hl-profile" data-name="151" data-link="https://media.explore.org/documents/151walker-1696281312485.png"
+        data-nickname="Walker"
+        style="
+          left: 90.24%;
+          top: 36.9%;
+        "></div><div class="nickname" data-name="" style="
+        left: 86.4%;
+        top: 45%;
+        ">Walker</div>
+        <div class="profile" data-name="284" data-link="https://media.explore.org/documents/284electra-1696281367741.png"
+        data-nickname="Electra"
+        style="
+          left: 89.9%;
+          top: 69.9%;
+        "></div><div class="nickname" data-name="284" style="
+          left: 85.4%;
+          top: 70%;
+        ">Electra</div>
+        <div class="profile" data-name="164" data-link="https://media.explore.org/documents/164bucky-1696281341258.png" style="
+          left: 89.9%;
+          top: 81.0%;
+        "></div><div class="nickname" data-name="164"
+        data-nickname="Bucky"
+        style="
+        left: 86.4%;
+        top: 89%;
+      ">Bucky</div>
+        <div class="profile" data-name="747" data-link="https://media.explore.org/documents/747-1696281504448.png" style="
+          left: 76.2%;
+          top: 47.1%;
         "></div>
-        <div class="profile" data-name="131" data-link="https://media.explore.org/documents/131-beforeafter-1632778809698.png" style="
-          left: 86.5%;
-          top: 19.6%;
-        "></div>
-        <div class="profile" data-name="402" data-link="https://media.explore.org/documents/402-beforeafter-1632778251877.png" style="
-          left: 86.5%;
-          top: 60.3%;
-        "></div>
-        <div class="profile" data-name="Otis" data-link="https://media.explore.org/documents/480otis-beforeafter-1632778305141.png" style="
-          left: 86.5%;
-          top: 77.6%;
-        "></div>
-        <div class="profile" data-name="503" data-link="https://media.explore.org/documents/503-beforeafter-1632778334865.png" style="
-          left: 77.5%;
-          top: 33.5%;
-        "></div>
-        <div class="profile" data-name="747" data-link="https://media.explore.org/documents/747-beforeafter-1632778384653.png" style="
-          left: 77.5%;
-          top: 46.5%;
-        "></div>
+        <div class="profile" data-name="435" data-link="https://media.explore.org/documents/428-1696281417619.png"
+        data-nickname="Holly"
+        style="
+          left: 76.0%;
+          top: 61.0%;
+        "></div><div class="nickname" data-name="435" style="
+          left: 72.7%;
+          top: 62.2%;
+        ">Holly</div>
 
         <div class="winner" style="
-          left: 23%;
-          top: 15.5%;
+          left: 16%;
+          top: 30.5%;
           "></div>
         <div class="winner" style="
-          left: 23%;
-          top: 68%;
+          left: 16.5%;
+          top: 85%;
           "></div>
         <div class="winner" style="
-          left: 68%;
-          top: 15.5%;
+          left: 75.5%;
+          top: 30.5%;
           "></div>
         <div class="winner" style="
-          left: 68%;
-          top: 68%;
-          "></div>
-
-        <div class="winner" style="
-          left: 32%;
-          top: 27%;
-          "></div>
-        <div class="winner" style="
-          left: 32%;
-          top: 55.5%;
-          "></div>
-        <div class="winner" style="
-          left: 59%;
-          top: 27%;
-          "></div>
-        <div class="winner" style="
-          left: 59%;
-          top: 55.5%;
+          left: 75%;
+          top: 85%;
           "></div>
 
         <div class="winner" style="
-          left: 42%;
-          top: 31%;
+          left: 26%;
+          top: 37%;
           "></div>
         <div class="winner" style="
-          left: 49%;
-          top: 51%;
+          left: 26%;
+          top: 78%;
+          "></div>
+        <div class="winner" style="
+          left: 65.5%;
+          top: 37%;
+          "></div>
+        <div class="winner" style="
+          left: 65.5%;
+          top: 78%;
+          "></div>
+
+        <div class="winner" style="
+          left: 35%;
+          top: 59%;
+          "></div>
+        <div class="winner" style="
+          left: 56%;
+          top: 56%;
           "></div>
 
         <div class="winner" style="
@@ -163,7 +246,7 @@ div.bg {
 
         <div class="score" style="
           left: 40%;
-          top: 83.5%;
+          top: 37.5%;
           ">0 Bracket Points</div>
 
       </div>
@@ -175,47 +258,53 @@ let bracket = [
     '8',
     [
       '4',
-      ['0', 0, 1, null,1],
+      ['0', 0, 1, null,-1],
       4,
-      null,4
+      null,-1
     ],
     [
       '5',
       5,
-      ['1', 2, 3, null,3],
-      null,3
+      ['1', 2, 3, null,-1],
+      null,-1
     ],
-    null,3
+    null,-1
   ],
   [
     '9',
     [
       '6',
-      ['2', 6, 7, null,6],
+      ['2', 6, 7, null,-1],
       10,
-      null,6
+      null,-1
     ],
     [
       '7',
       11,
-      ['3', 8, 9, null,9],
-      null,9
+      ['3', 8, 9, null,-1],
+      null,-1
     ],
-    null,9
+    null,-1
   ],
-  null,9
+  null,-1
 ];
 
 $ = (...args)=>Array.from(document.querySelectorAll.apply(document, args));
 let profs = $('.profile')
-let bears = {none:'???'};
+let bears_by_bracket = {none:{id:'???',name:'???'}};
+let bears_by_id = {};
 
 
 profs.map((v,i)=>{
   v.addEventListener('click',()=>{
     window.open(v.dataset.link);
   })
-  bears[i] = v.dataset.name;
+  let bear = {
+    id: v.dataset.name,
+    name: `${v.dataset.name} ${v.dataset.nickname||''}`.trim(),
+  };
+  bears_by_bracket[i] = bear;
+  bears_by_id[bear.id] = bear;
 });
 
 let winners = {};
@@ -267,23 +356,68 @@ let make_group = (g, depth) =>{
   }
 
   if (w !== undefined) {
-    let has_both = a !== 'none' && b !== 'none';
-    w.innerHTML = `<select style="
-      width: 100%;
-      ${!has_both?'background-color: #c1c1c1;':''}
-      ${guess!==null?(
-        (real === null || guess == real)?
-        (real !== null?
-         'background-color: #3ce870;':
-         'background-color: #a3f9ff;'
-        ):
-        'background-color: #FF3C3C; color: white;'
-      ):''}
-    ">
-      <option>SELECT</option>
-      <option ${(a_val == guess)?'selected':''}>${bears[a_val]}</option>
-      <option ${(b_val == guess)?'selected':''}>${bears[b_val]}</option>
+    let has_both = a_val !== 'none' && b_val !== 'none';
+    let style = 'width: 100%;';
+    let clazz = '';
+
+    let bear_a = bears_by_bracket[a_val];
+    let profile_a = null;
+    let bear_b = bears_by_bracket[b_val];
+    let profile_b = null;
+
+    if (has_both) {
+      profile_a = profs.filter((v,i)=>v.dataset.name == bear_a.id)[0];
+      profile_b = profs.filter((v,i)=>v.dataset.name == bear_b.id)[0];
+
+      if (guess !== null) {
+        if (real === null || guess == real) {
+          style += 'background-color: #3ce870;';
+        } else {
+          style += 'background-color: #FF3C3C; color: white;';
+        }
+      } else {
+        style += 'background-color: #ff9657; box-shadow: 0 0 11px 4px #e39b66;';
+        clazz += ' hl-select';
+        profile_a.classList.add('hl-profile');
+        profile_b.classList.add('hl-profile');
+      }
+    } else {
+      style += 'background-color: #9d6b47;';
+    }
+    w.innerHTML = `<select style="${style}" class="${clazz}">
+      <option>${has_both?'SELECT':'MISSING'}</option>
+      <option ${(a_val == guess)?'selected':''} value="${bear_a.id}">${bear_a.name}</option>
+      <option ${(b_val == guess)?'selected':''} value="${bear_b.id}">${bear_b.name}</option>
     </select>`
+    let sel = w.querySelector('select');
+    // Add highlight to profiles when select is mouse over
+    let highlight_fight = ()=>{
+      if (sel.selectedIndex !== 0 && false) {
+        console.log(sel.value);
+        let bear = bears_by_id[sel.value];
+        console.log(bear);
+        let profile = profs.filter((v,i)=>v.dataset.name == bear.id)[0];
+        profile.classList.add('select-profile');
+      } else {
+        // Do it for both
+        if (profile_a) {
+          profile_a.classList.add('select-profile');
+        }
+        if (profile_b) {
+          profile_b.classList.add('select-profile');
+        }
+      }
+    };
+    sel.addEventListener('mouseover', highlight_fight);
+    for (let op of sel.querySelectorAll('option')) {
+      op.addEventListener('mouseover', highlight_fight);
+    }
+    sel.addEventListener('mouseout',()=>{
+      profs.map((v,i)=>v.classList.remove('select-profile'));
+    });
+    sel.addEventListener('change',()=>{
+      profs.map((v,i)=>v.classList.remove('select-profile'));
+    });
   }
   if (guess === null)
     return 'none';
@@ -291,6 +425,8 @@ let make_group = (g, depth) =>{
 }
 let update = () => {
   score = 0;
+  document.querySelectorAll('.hl-profile').forEach(
+    (v,i)=>v.classList.remove('hl-profile'));
   make_group(bracket, 3);
   $('select').map((v,i)=>{
     v.addEventListener('change',() => {
