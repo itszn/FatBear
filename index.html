@@ -377,7 +377,7 @@ let make_group = (g, depth) =>{
   g[4] = real;
 
   if (guess !== null && real == guess) {
-    score += 2**depth;
+    score += 2**(depth-1);
   }
 
   if (w !== undefined) {
